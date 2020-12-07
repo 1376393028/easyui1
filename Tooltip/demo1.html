@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="demo1.css">
+    <title>Tooltip</title>
+</head>
+
+<body>
+    <div class="container">
+        <h2>tooltip</h2>
+        <div class="button-items">
+            <button class="button" data-name="tooltip" data-align="top" data-text="这是上">上</button>
+            <button class="button" data-name="tooltip" data-align="bottom" data-text="这是下">下</button>
+            <button class="button" data-name="tooltip" data-align="left" data-text="这是左">左</button>
+            <button class="button" data-name="tooltip" data-align="right" data-text="这是右">右</button>
+        </div>
+    </div>
+</body>
+<script>
+    class Tooltip {
+        constructor($node) {
+            this.$node = $node
+            this.$node.tooltip = this
+            this.rende()
+            this.setNode()
+
+        }
+        rende() {
+            let $div = document.createElement('span')
+            this.$div = $div
+            $div.classList.add(this.$node.getAttribute('data-align'))
+            $div.innerText = this.$node.getAttribute('data-text')
+            this.$node.appendChild($div)
+        }
+        setNode() {
+            this.$node.showTooltip = this.show.bind(this)
+            this.$node.hideTooltip = this.hide.bind(this)
+        }
+
+        hide() {
+            this.$div.classList.add('hide')
+        }
+        show() {
+            this.$div.classList.remove('hide')
+        }
+
+    }
+    document.querySelectorAll('[data-name="tooltip"]').forEach($tip => {
+        $tip.onmouseenter = function() {
+            if ($tip.tooltip) {
+                $tip.showTooltip()
+            } else {
+                new Tooltip(this)
+            }
+        }
+        $tip.onmouseleave = function() {
+            $tip.hideTooltip()
+        }
+    })
+</script>
+
+</html>

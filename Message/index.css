@@ -1,0 +1,61 @@
+.container {
+    max-width: 800px;
+    margin: 30px auto;
+    padding: 16px;
+    box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.3);
+    border-radius: 4px;
+}
+
+.button-items .button {
+    font-size: 13px;
+    font-weight: 500;
+    margin-right: 10px;
+    padding: 6px 10px;
+    background: #fff;
+    border: 1px solid #303030;
+    border-radius: 4px;
+    outline: none;
+}
+
+.button-items .button:hover {
+    cursor: pointer;
+    color: royalblue;
+}
+
+.message {
+    color: #fff;
+    font-size: 14px;
+    padding: 6px 10px;
+    border-radius: 4px;
+    position: fixed;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%) translateY(-50px);
+    transition: all .3s;
+    display: flex;
+    align-items: center;
+}
+
+.message .iconfont {
+    margin-right: 6px;
+}
+
+.message.success {
+    background: #0f0;
+}
+
+.message.warming {
+    background: rgb(134, 62, 62);
+}
+
+.message.info {
+    background: rgb(33, 56, 133);
+}
+
+.message.danger {
+    background: #f00;
+}
+
+.show {
+    transform: translateX(-50%) translateY(10px);
+}
